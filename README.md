@@ -14,24 +14,24 @@ This is a Maven archetype for creating a multi-module project including the foll
 * Services
 * Webapp
 
-##### Core
+#### Core
 This module includes the business domain models, general exceptions and error handling stuff.
 
-##### Persistence Interfaces
+#### Persistence Interfaces
 This module defines Data Access Object interfaces, as well as query helpers interfaces 
 (which help de DAOs consumers perform queries, by supplying query predicates)
 
-##### Persistence
+#### Persistence
 This module defines configuration for spring data, and implement the query helpers
 
-##### Services Interfaces
+#### Services Interfaces
 This module defines Services and some security stuff interfaces
 
-##### Services
+#### Services
 This module implements the services and security stuff interfaces.
 It also defines configuration for spring security global method security.
 
-##### Webapp
+#### Webapp
 This is the main module. It contains the runnable class.
 It defines main configuration for the application.
 It implements the web layer using Jersey, including the authentication mechanism (Bearer authentication using JWT).
