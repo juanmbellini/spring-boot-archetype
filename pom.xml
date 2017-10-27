@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bellotapps.archetypes</groupId>
+    <artifactId>spring-boot-archetype</artifactId>
+    <version>1.0.0-RELEASE</version>
+    <packaging>maven-archetype</packaging>
+
+    <name>Spring Boot Web Application Archetype</name>
+    <description>
+        A Maven archetype for a multi-module project using Spring Boot (and other Spring projects),
+        which includes core, persistence interfaces, persistence, service interfaces, service and webapp modules.
+    </description>
+
+    <properties>
+        <!-- Build -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Plugins -->
+        <archetype-packaging.version>3.0.1</archetype-packaging.version>
+    </properties>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>${archetype-packaging.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

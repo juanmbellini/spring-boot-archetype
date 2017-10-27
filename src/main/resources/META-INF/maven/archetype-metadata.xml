@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor
+        name="spring-boot-archetype"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0
+                            http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+        xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <requiredProperties>
+        <!-- Basic properties -->
+        <requiredProperty key="version">
+            <defaultValue>0.0.1-SNAPSHOT</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="package">
+            <defaultValue>${groupId.replaceAll("-", "_")}.${artifactId.replaceAll("-", "_")}</defaultValue>
+        </requiredProperty>
+
+        <!-- Database properties -->
+        <requiredProperty key="dbHost">
+            <defaultValue>localhost</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="dbPort">
+            <defaultValue>5432</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="dbName">
+            <defaultValue>${artifactId}</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="dbUsername">
+            <defaultValue>${artifactId}</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="dbPassword"/>
+    </requiredProperties>
+
+
+    <fileSets>
+
+        <!-- ****************************** -->
+        <!-- Configuration files and README -->
+        <!-- ****************************** -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory/>
+            <includes>
+                <include>.travis.yml</include>
+                <include>README.md</include>
+            </includes>
+        </fileSet>
+
+
+        <!-- *********** -->
+        <!-- Root Module -->
+        <!-- *********** -->
+        <!-- Root Project pom -->
+        <fileSet filtered="true">
+            <directory/>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+
+        <!-- *********** -->
+        <!-- Core Module -->
+        <!-- *********** -->
+        <!-- Core module pom -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>__artifactId__-core</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <!-- Core Main java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-core/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <!-- Core Main resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-core/src/main/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Core Test java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-core/src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Core Test resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-core/src/test/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+
+
+        <!-- ****************** -->
+        <!-- Persistence Module -->
+        <!-- ****************** -->
+        <!-- Persistence module pom -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>__artifactId__-persistence</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <!-- Persistence Main java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-persistence/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <!-- Persistence Main resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-persistence/src/main/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Persistence Test java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-persistence/src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Persistence Test resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-persistence/src/test/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+
+
+        <!-- ***************************** -->
+        <!-- Persistence Interfaces Module -->
+        <!-- ***************************** -->
+        <!-- Persistence Interfaces module pom -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>__artifactId__-persistence-interfaces</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <!-- Persistence Interfaces Main java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-persistence-interfaces/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <!-- Persistence Interfaces Main resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-persistence-interfaces/src/main/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Persistence Interfaces Test java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-persistence-interfaces/src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Persistence Interfaces Test resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-persistence-interfaces/src/test/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+
+
+        <!-- *************** -->
+        <!-- Services Module -->
+        <!-- *************** -->
+        <!-- Services module pom -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>__artifactId__-services</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <!-- Services Main java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-services/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <!-- Services Main resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-services/src/main/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Services Test java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-services/src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Services Test resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-services/src/test/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+
+
+        <!-- ************************** -->
+        <!-- Services Interfaces Module -->
+        <!-- ************************** -->
+        <!-- Services Interfaces module pom -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>__artifactId__-services-interfaces</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <!-- Services Interfaces Main java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-services-interfaces/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <!-- Services Interfaces Main resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-services-interfaces/src/main/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Services Interfaces Test java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-services-interfaces/src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Services Interfaces Test resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-services-interfaces/src/test/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+
+
+        <!-- ************* -->
+        <!-- Webapp Module -->
+        <!-- ************* -->
+        <!-- Webapp module pom -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>__artifactId__-webapp</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <!-- Webapp Main java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-webapp/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <!-- Webapp Main resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-webapp/src/main/resources</directory>
+            <includes>
+                <include>**/*.yml</include>
+                <include>**/*.json</include>
+                <include>**/*.xml</include>
+                <include>**/*.sql</include>
+            </includes>
+        </fileSet>
+        <!-- Webapp Test java -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>__artifactId__-webapp/src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+        <!-- Webapp Test resources -->
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory>__artifactId__-webapp/src/test/resources</directory>
+            <excludes>
+                <exclude>**/*.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+
+    </fileSets>
+
+    <!--<modules>-->
+    <!--<module id="${artifactId}-core" dir="__artifactId__-core" name="${artifactId}-core">-->
+    <!--<fileSets>-->
+    <!--<fileSet filtered="true" packaged="true" encoding="UTF-8">-->
+    <!--<directory>src/main/java</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.java</include>-->
+    <!--</includes>-->
+    <!--</fileSet>-->
+    <!--</fileSets>-->
+    <!--</module>-->
+    <!--<module id="${artifactId}-persistence-interfaces" dir="__artifactId__-persistence-interfaces"-->
+    <!--name="${artifactId}-persistence-interfaces">-->
+    <!--<fileSets>-->
+    <!--<fileSet filtered="true" packaged="true" encoding="UTF-8">-->
+    <!--<directory>src/main/java</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.java</include>-->
+    <!--</includes>-->
+    <!--</fileSet>-->
+    <!--</fileSets>-->
+    <!--</module>-->
+    <!--<module id="${artifactId}-services-interfaces" dir="__artifactId__-services-interfaces"-->
+    <!--name="${artifactId}-services-interfaces">-->
+    <!--<fileSets>-->
+    <!--<fileSet filtered="true" packaged="true" encoding="UTF-8">-->
+    <!--<directory>src/main/java</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.java</include>-->
+    <!--</includes>-->
+    <!--</fileSet>-->
+    <!--</fileSets>-->
+    <!--</module>-->
+    <!--<module id="${artifactId}-persistence" dir="__artifactId__-persistence"-->
+    <!--name="${artifactId}-persistence">-->
+    <!--<fileSets>-->
+    <!--<fileSet filtered="true" packaged="true" encoding="UTF-8">-->
+    <!--<directory>src/main/java</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.java</include>-->
+    <!--</includes>-->
+    <!--</fileSet>-->
+    <!--</fileSets>-->
+    <!--</module>-->
+    <!--<module id="${artifactId}-services" dir="__artifactId__-services" name="${artifactId}-services">-->
+    <!--<fileSets>-->
+    <!--<fileSet filtered="true" packaged="true" encoding="UTF-8">-->
+    <!--<directory>src/main/java</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.java</include>-->
+    <!--</includes>-->
+    <!--</fileSet>-->
+    <!--</fileSets>-->
+    <!--</module>-->
+    <!--<module id="${artifactId}-webapp" dir="__artifactId__-webapp" name="${artifactId}-webapp">-->
+    <!--<fileSets>-->
+    <!--<fileSet filtered="true" packaged="true" encoding="UTF-8">-->
+    <!--<directory>src/main/java</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.java</include>-->
+    <!--</includes>-->
+    <!--</fileSet>-->
+    <!--<fileSet filtered="true" encoding="UTF-8">-->
+    <!--<directory>src/main/resources</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.xml</include>-->
+    <!--</includes>-->
+    <!--</fileSet>-->
+    <!--<fileSet encoding="UTF-8">-->
+    <!--<directory>src/main/resources</directory>-->
+    <!--<includes>-->
+    <!--<include>**/*.yml</include>-->
+    <!--<include>**/*.json</include>-->
+    <!--<include>**/*.sql</include>-->
+    <!--</includes>-->
+    <!--</fileSet>-->
+    <!--</fileSets>-->
+    <!--</module>-->
+
+</archetype-descriptor>
