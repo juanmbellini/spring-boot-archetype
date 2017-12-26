@@ -40,7 +40,7 @@ public interface UserPermissionProvider {
      * Tells whether the currently authenticated {@link ${package}.models.User}
      * can write the {@link ${package}.models.User} with the given {@code id}.
      *
-     * @param id The id of the {@link ${package}.models.User} to be writed.
+     * @param id The id of the {@link ${package}.models.User} to be written.
      * @return {@code true} if it has permission, or {@code false} otherwise.
      */
     boolean writeById(long id);
