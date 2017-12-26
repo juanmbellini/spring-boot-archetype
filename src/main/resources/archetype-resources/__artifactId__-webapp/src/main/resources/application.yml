@@ -11,10 +11,7 @@ spring:
 
     # Mock datasource for booting purposes
     # Change as needed
-    datasource:
-        url: jdbc:postgresql://${dbHost}:${dbPort}/${dbName}
-        username: ${dbUsername}
-        password: ${dbPassword}
+
 
     jpa:
         hibernate:
@@ -53,6 +50,11 @@ spring:
     profiles:
         - dev
         - development
+
+    datasource:
+        url: jdbc:postgresql://${dbHost}:${dbPort}/${dbName}
+        username: ${dbUsername}
+        password: ${dbPassword}
 
     jpa:
         properties:
