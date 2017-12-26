@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 ${symbol_pound} ${artifactId}
 
-A Web Application Projcet using Spring Boot
+A Web Application Project using Spring Boot
 
 ${symbol_pound}${symbol_pound} Getting started
 
