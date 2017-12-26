@@ -123,8 +123,12 @@ public class UserEndpoint implements ValidationExceptionThrower {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response register(final UserDto userDto) {
         return Optional.ofNullable(userDto)
-                .map(dto -> userService.register(userDto.getFullName(), userDto.getBirthDate(),
-                        userDto.getUsername(), userDto.getEmail(), userDto.getPassword()))
+                .map(dto -> {
+                    LOGGER.debug("Creating user with username {}, and email {}",
+                            userDto.getUsername(), userDto.getEmail());
+                    return userService.register(userDto.getFullName(), userDto.getBirthDate(),
+                            userDto.getUsername(), userDto.getEmail(), userDto.getPassword());
+                })
                 .map(user -> Response
                         .created(uriInfo.getAbsolutePathBuilder().path(String.valueOf(user.getId())).build())
                         .build())
@@ -140,6 +144,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
         }
         return Optional.ofNullable(userDto)
                 .map(dto -> {
+                    LOGGER.debug("Updating user with id {}", id);
                     userService.update(id, userDto.getFullName(), userDto.getBirthDate());
                     return Response.noContent().build();
                 })
@@ -156,6 +161,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
         }
         return Optional.ofNullable(newUsernameDto)
                 .map(dto -> {
+                    LOGGER.debug("Changing username to {} to user with id {}", username, id);
                     userService.changeUsername(id, dto.getValue());
                     return Response.noContent().build();
                 })
@@ -171,6 +177,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
         }
         return Optional.ofNullable(newEmailDto)
                 .map(dto -> {
+                    LOGGER.debug("Changing email to {} to user with id {}", email, id);
                     userService.changeEmail(id, dto.getValue());
                     return Response.noContent().build();
                 })
@@ -186,6 +193,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
         }
         return Optional.ofNullable(passwordChangeDto)
                 .map(dto -> {
+                    LOGGER.debug("Changing password to user with id {} ", id);
                     userService.changePassword(id, dto.getCurrentPassword(), dto.getNewPassword());
                     return Response.noContent().build();
                 })
@@ -198,6 +206,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
         if (id <= 0) {
             throw new IllegalParamValueException(Collections.singletonList("id"));
         }
+        LOGGER.debug("Getting authorities for user with id {} ", id);
         final Set<Role> roles = userService.getRoles(id);
         return Response.ok(roles).build();
     }
@@ -207,7 +216,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
     public Response addAuthority(@PathParam("id") final long id, @PathParam("role") final Role role) {
         validateRoleParams(id, role);
         userService.addRole(id, role);
-
+        LOGGER.debug("Adding role {} to user with id {} ", role, id);
         return Response.noContent().build();
     }
 
@@ -216,7 +225,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
     public Response removeAuthority(@PathParam("id") final long id, @PathParam("role") final Role role) {
         validateRoleParams(id, role);
         userService.removeRole(id, role);
-
+        LOGGER.debug("Removing role {} to user with id {} ", role, id);
         return Response.noContent().build();
     }
 
@@ -227,6 +236,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
         if (id <= 0) {
             throw new IllegalParamValueException(Collections.singletonList("id"));
         }
+        LOGGER.debug("Removing user with id {}", id);
         userService.deleteById(id);
         return Response.noContent().build();
     }
@@ -235,6 +245,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
     @Path("username/{username : .+}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteByUsername(@PathParam("username") final String username) {
+        LOGGER.debug("Removing user with username {}", username);
         userService.deleteByUsername(username);
         return Response.noContent().build();
     }
@@ -243,6 +254,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
     @Path("email/{email : .+}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteByEmail(@PathParam("email") final String email) {
+        LOGGER.debug("Removing user with email {}", email);
         userService.deleteByEmail(email);
         return Response.noContent().build();
     }
