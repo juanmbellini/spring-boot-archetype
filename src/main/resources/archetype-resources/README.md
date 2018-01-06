@@ -26,7 +26,7 @@ ${symbol_pound}${symbol_pound} Getting started
 5. Run the application
 	
 	``` 
-	$ java -jar <-Dproperties> <project-root>/from-arch-webapp/target/from-arch-webapp-1.0.0-SNAPSHOT.jar
+	$ java -jar <-Dproperties> <project-root>/${artifactId}-webapp/target/${artifactId}-webapp-${version}.jar
 	```
 
 
