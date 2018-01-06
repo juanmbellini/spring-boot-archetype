@@ -9,10 +9,6 @@ spring:
             load-on-startup: 1
         type: servlet
 
-    # Mock datasource for booting purposes
-    # Change as needed
-
-
     jpa:
         hibernate:
             ddl-auto: none
