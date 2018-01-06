@@ -108,7 +108,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
     @GET
     @Path("username/{username : .+}")
     public Response getUserByUsername(@PathParam("username") final String username) {
-        if (username <= 0) {
+        if (username == null) {
             throw new IllegalParamValueException(Collections.singletonList("username"));
         }
         LOGGER.debug("Getting user by username {}", username);
@@ -118,7 +118,7 @@ public class UserEndpoint implements ValidationExceptionThrower {
     @GET
     @Path("email/{email : .+}")
     public Response getUserByEmail(@PathParam("email") final String email) {
-        if (email <= 0) {
+        if (email == null) {
             throw new IllegalParamValueException(Collections.singletonList("email"));
         }
         LOGGER.debug("Getting user by email {}", email);
@@ -166,9 +166,10 @@ public class UserEndpoint implements ValidationExceptionThrower {
             throw new IllegalParamValueException(Collections.singletonList("id"));
         }
         return Optional.ofNullable(newUsernameDto)
-                .map(dto -> {
+                .map(StringValueDto::getValue)
+                .map(username -> {
                     LOGGER.debug("Changing username to {} to user with id {}", username, id);
-                    userService.changeUsername(id, dto.getValue());
+                    userService.changeUsername(id, username);
                     return Response.noContent().build();
                 })
                 .orElseThrow(MissingJsonException::new);
@@ -182,9 +183,10 @@ public class UserEndpoint implements ValidationExceptionThrower {
             throw new IllegalParamValueException(Collections.singletonList("id"));
         }
         return Optional.ofNullable(newEmailDto)
-                .map(dto -> {
+                .map(StringValueDto::getValue)
+                .map(email -> {
                     LOGGER.debug("Changing email to {} to user with id {}", email, id);
-                    userService.changeEmail(id, dto.getValue());
+                    userService.changeEmail(id, email);
                     return Response.noContent().build();
                 })
                 .orElseThrow(MissingJsonException::new);
