@@ -39,12 +39,12 @@
     </properties>
 
     <modules>
-        <module>spring-boot-example-core</module>
-        <module>spring-boot-example-persistence-interfaces</module>
-        <module>spring-boot-example-services-interfaces</module>
-        <module>spring-boot-example-persistence</module>
-        <module>spring-boot-example-services</module>
-        <module>spring-boot-example-webapp</module>
+        <module>${artifactId}-core</module>
+        <module>${artifactId}-interfaces</module>
+        <module>${artifactId}-services-interfaces</module>
+        <module>${artifactId}-persistence</module>
+        <module>${artifactId}-services</module>
+        <module>${artifactId}-webapp</module>
     </modules>
 
     <dependencyManagement>
