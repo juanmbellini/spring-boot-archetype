@@ -40,7 +40,7 @@
 
     <modules>
         <module>${artifactId}-core</module>
-        <module>${artifactId}-interfaces</module>
+        <module>${artifactId}-persistence-interfaces</module>
         <module>${artifactId}-services-interfaces</module>
         <module>${artifactId}-persistence</module>
         <module>${artifactId}-services</module>
